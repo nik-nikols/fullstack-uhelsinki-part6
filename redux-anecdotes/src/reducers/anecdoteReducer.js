@@ -54,5 +54,13 @@ export const createNew = (content) => {
   };
 };
 
+export const incrementAnecdoteVote = (id) => {
+  return async (dispatch, getState) => {
+    const item = getState().anecdotes.find(el => el.id == id);
+    const newItem = await anecdoteServer.updateItem({...item, votes: item.votes + 1});
+    dispatch(incrementVote(id));
+  };
+};
+
 export const { setAnecdotes, appendAnecdote, incrementVote} = anecdotesSlice.actions;
 export default anecdotesSlice.reducer;
