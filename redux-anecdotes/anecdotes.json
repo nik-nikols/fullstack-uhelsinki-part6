@@ -34,6 +34,11 @@
       "id": "2cd9",
       "content": "my first anecdote",
       "votes": 0
+    },
+    {
+      "id": "d6a2",
+      "content": "my second anecdote",
+      "votes": 0
     }
   ]
 }
