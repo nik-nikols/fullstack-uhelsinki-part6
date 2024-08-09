@@ -9,11 +9,15 @@ const Notification = () => {
 
   const notification = useSelector(store => store.notification);
 
-  return (
-    <div style={style}>
-      {notification}
-    </div>
-  );
+  if (notification) {
+    return (
+      <div style={style}>
+        {notification}
+      </div>
+    );
+  }
+
+  return null;
 };
 
 export default Notification;
