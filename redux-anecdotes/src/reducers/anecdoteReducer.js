@@ -25,13 +25,8 @@ const anecdotesSlice = createSlice({
   name: 'anecdotes',
   initialState: [],
   reducers: {
-    createNew(state, action) {
-      const newItem = {
-        content: action.payload,
-        id: getId(),
-        votes: 0
-      };
-      return state.concat(newItem);
+    appendAnecdote(state, action) {
+      return state.concat(action.payload);
     },
     incrementVote(state, action) {
       const id = action.payload;
@@ -44,5 +39,5 @@ const anecdotesSlice = createSlice({
   }
 });
 
-export const { setAnecdotes, createNew, incrementVote} = anecdotesSlice.actions;
+export const { setAnecdotes, appendAnecdote, incrementVote} = anecdotesSlice.actions;
 export default anecdotesSlice.reducer;
