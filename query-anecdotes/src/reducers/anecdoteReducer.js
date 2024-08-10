@@ -22,11 +22,24 @@ export const apiSlice = createApi({
                 }
             }),
             invalidatesTags: ['Anecdotes']
+        }),
+        incrementVote: builder.mutation({
+            query: (item) => ({
+                url: `/anecdotes/${item.id}`,
+                method: 'PUT',
+                body: {
+                    id: item.id,
+                    content: item.content,
+                    votes: item.votes + 1
+                }
+            }),
+            invalidatesTags: ['Anecdotes']
         })
     })
 });
 
 export const {
     useGetAllQuery,
-    useAddNewMutation
+    useAddNewMutation,
+    useIncrementVoteMutation
 } = apiSlice;

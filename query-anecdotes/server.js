@@ -21,7 +21,7 @@ const validator = (request, response, next) => {
 server.use(middlewares)
 server.use(jsonServer.bodyParser)
 server.use(validator)
-server.use(jsonServer.rewriter({'/api/anecdotes': '/anecdotes'}))
+server.use(jsonServer.rewriter({'/api/*': '/$1'}))
 server.use(router)
 
 server.listen(3001, () => {

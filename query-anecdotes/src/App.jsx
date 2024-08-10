@@ -1,12 +1,15 @@
 import AnecdoteForm from './components/AnecdoteForm'
 import Notification from './components/Notification'
-import { useGetAllQuery } from './reducers/anecdoteReducer';
+import { useGetAllQuery, useIncrementVoteMutation } from './reducers/anecdoteReducer';
 
 const App = () => {
 
+  const [incrementVote, incrementVoteResult] = useIncrementVoteMutation();
+
   const handleVote = (anecdote) => {
-    console.log('vote')
-  }
+    console.log('vote');
+    incrementVote(anecdote);
+  };
 
   const {
     data: anecdotes,
