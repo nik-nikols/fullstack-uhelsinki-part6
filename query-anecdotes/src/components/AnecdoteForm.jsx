@@ -1,10 +1,15 @@
+import { useAddNewMutation } from '../reducers/anecdoteReducer';
+
 const AnecdoteForm = () => {
 
+  const [addNew, addNewResult] = useAddNewMutation();
+
   const onCreate = (event) => {
-    event.preventDefault()
-    const content = event.target.anecdote.value
-    event.target.anecdote.value = ''
-    console.log('new anecdote')
+    event.preventDefault();
+    const content = event.target.anecdote.value;
+    event.target.anecdote.value = '';
+    addNew(content);
+    console.log('new anecdote');
 }
 
   return (

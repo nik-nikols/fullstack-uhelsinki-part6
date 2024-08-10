@@ -9,11 +9,24 @@ export const apiSlice = createApi({
     tagTypes: ['Anecdotes'],
     endpoints: builder => ({
         getAll: builder.query({
-            query: () => '/anecdotes'
+            query: () => '/anecdotes',
+            providesTags: ['Anecdotes']
+        }),
+        addNew: builder.mutation({
+            query: (content) => ({
+                url: '/anecdotes',
+                method: 'POST',
+                body: {
+                    content,
+                    votes: 0
+                }
+            }),
+            invalidatesTags: ['Anecdotes']
         })
     })
 });
 
 export const {
-    useGetAllQuery
+    useGetAllQuery,
+    useAddNewMutation
 } = apiSlice;
